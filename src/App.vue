@@ -1,28 +1,38 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang="html">
+  <div class="main-container">
+    <h1>Harry Potter</h1>
+    <h3>{{sortingHat}}</h3>
+    <!-- <p>{{characters}}</p> -->
+    <!-- <p>{{spells}}</p> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      sortingHat: "",
+      characters: [],
+      spells: []
+    };
+  },
+
+  mounted(){
+    fetch("https://www.potterapi.com/v1/sortinghat")
+    .then(response => response.json())
+    .then(sortingHat => this.sortingHat = sortingHat)
+
+    fetch("https://www.potterapi.com/v1/characters?key=$2a$10$wmc1QkABdgEulOcSMTdYz.qQgGJyMBJXVNoXNJu5428XykYmJCHW6")
+    .then(response => response.json())
+    .then(characters => this.characters = characters)
+
+    fetch("https://www.potterapi.com/v1/characters?key=$2a$10$wmc1QkABdgEulOcSMTdYz.qQgGJyMBJXVNoXNJu5428XykYmJCHW6")
+    .then(response => response.json())
+    .then(spells => this.spells = spells)
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="css" scoped>
 </style>
