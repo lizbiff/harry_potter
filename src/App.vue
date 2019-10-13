@@ -34,13 +34,11 @@ export default {
     .then(response => response.json())
     .then(characters => this.characters = characters)
 
-    fetch("https://www.potterapi.com/v1/spells?key=$2a$10$wmc1QkABdgEulOcSMTdYz.qQgGJyMBJXVNoXNJu5428XykYmJCHW6")
-    .then(response => response.json())
-    .then(spells => this.spells = spells)
+
+
 
     eventBus.$on('character-selected', (selectedCharacter) =>{
       this.selectedCharacter = selectedCharacter;
-      console.log(this.selectedCharacter)
     });
   }
 }

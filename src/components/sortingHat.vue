@@ -17,7 +17,7 @@
     <div class="congratulations">
 
     </div>
-    <div class="message">
+    <div v-if="message.length" class="message">
       {{ message }}
     </div>
   </div>
@@ -71,6 +71,7 @@ export default {
     font-size: 15px;
     width: 40%;
     margin-right: 0;
+    margin-bottom: 30px;
     padding: 15px;
     background-color: #241f61;
     color: white;
@@ -93,8 +94,10 @@ export default {
   }
 
   .message {
+    background-color: #241f61 ;
     padding: 30px;
     margin: 30px;
     font-size: 22px;
+    color: white;
   }
   </style>
